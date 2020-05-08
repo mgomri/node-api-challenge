@@ -1,14 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Project = ({ project }) => {
-    const projectStatus = (project.completed === false? 'Not completed': 'Completed');
+    
     return(
+        <Link to={`/projects/${project.id}`} className='link'>
         <div className='project'>
             <h4>{project.name}</h4>
-            <p>{project.description}</p>
-            <p>{projectStatus}</p>
             
         </div>
+        </Link>
     );
 }
 export default Project;

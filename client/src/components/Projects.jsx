@@ -1,24 +1,30 @@
-import React from 'react';
-import{ Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import Project from './Project';
 
-const Projects = ({ projects }) => {
+
+const Projects = () => {
      
-    
+    const [projects, setProjects] = useState([]);
 
-  
+    const fetchProjects = () => {
+        axios.get('http://localhost:8000/projects')
+             .then(res => {
+                 setProjects(res.data);
+                 console.log(res.data);
+             })
+             .catch(err => console.log(err));
+    };
 
-    
+    useEffect(() => {
+        fetchProjects();
+    }, []);
 
     return(
         <div className='projects'>
-            {projects.map(pr =>
-            <Link to={`/projects/${pr.id}`} key={pr.id} className='project-name' >
-
-                        <h4 className='title'>{pr.name}</h4>  
-                    
-            </Link>
-            )}
-    </div>
+            <h1 className='title'>Welcome to react App</h1>
+            {projects.map(pr => <Project key={pr.id} project={pr} /> )}
+        </div>
     );
 }
 
