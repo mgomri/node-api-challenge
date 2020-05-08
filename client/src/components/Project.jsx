@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Project = ({ project }) => {
     
     return(
-        <Link to={`/projects/${project.id}`} className='link'>
+        <Link to={`/projects/${project.id}`} className='link box'>
         <div className='project'>
             <h4>{project.name}</h4>
             

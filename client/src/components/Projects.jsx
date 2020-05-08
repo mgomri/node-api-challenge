@@ -11,7 +11,7 @@ const Projects = () => {
         axios.get('http://localhost:8000/projects')
              .then(res => {
                  setProjects(res.data);
-                 console.log(res.data);
+                
              })
              .catch(err => console.log(err));
     };
@@ -22,7 +22,7 @@ const Projects = () => {
 
     return(
         <div className='projects'>
-            <h1 className='title'>Welcome to react App</h1>
+            <h1 className='title'>Welcome to React App</h1>
             {projects.map(pr => <Project key={pr.id} project={pr} /> )}
         </div>
     );
